@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FitnessAppDemo</string>
+    <string name="facebook_app_id">211230367460627</string>
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">com.example.fitnessappdemo</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fbcom.example.fitnessappdemo</string>
+    <!-- Twitter consumer key and secret -->
+
+
+</resources>

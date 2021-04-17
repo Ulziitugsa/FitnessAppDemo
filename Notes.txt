@@ -1,0 +1,20 @@
+1. User authentication -> Either firebase or Google Outh
+2. Sing up 
+3. Different types of login.
+4. Decide on what database are we gonna use for the entire app
+5. Github
+6. Trello
+
+aulziitugs@yahoo.com
+
+
+Firebase
+-firebase authentication
+-it is on IOS
+- can use cloud firestore(for all the datas) - no server needed
+
+Google oath
+- only for authentication.
+- small api that can be icnluded in app
+
+
