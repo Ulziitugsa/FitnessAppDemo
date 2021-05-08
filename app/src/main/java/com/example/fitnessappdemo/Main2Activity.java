@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,11 +18,23 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.jar.Attributes;
 
 public class Main2Activity extends AppCompatActivity {
 
+    TextView NameTxt;
+    TextView EmailTxt;
+    EditText AgeTxt;
+    EditText HeightTxt;
+    EditText WeightTxt;
+    EditText DOBTxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +45,12 @@ public class Main2Activity extends AppCompatActivity {
 
             String name = user.getDisplayName();
             String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-
-            TextView NameTxt = (TextView)findViewById(R.id.textViewName);
-            TextView EmailTxt = (TextView)findViewById(R.id.textViewEmail);
-
+            NameTxt = (TextView)findViewById(R.id.textViewName);
+            EmailTxt = (TextView)findViewById(R.id.textViewEmail);
+            AgeTxt = (EditText)findViewById(R.id.ageEditText);
+            HeightTxt = (EditText)findViewById(R.id.HeightEditText);
+            WeightTxt = (EditText)findViewById(R.id.WeightEditText);
+            DOBTxt = (EditText)findViewById(R.id.DateTextDate);
             NameTxt.setText( "Hello " + name);
             EmailTxt.setText(email);
 
@@ -63,5 +77,17 @@ public class Main2Activity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+    }
+
+    public void ContinueClick(View view) {
+        Date date1 = null;
+        try {
+            date1 =new SimpleDateFormat("dd/MM/yyyy").parse(String.valueOf(DOBTxt.getText()));
+        } catch (ParseException e) {
+            Log.e("DAAAMN", e.getMessage());
+        }
+        UserClass user = new UserClass(Integer.parseInt(String.valueOf(AgeTxt.getText())), Integer.parseInt(String.valueOf(WeightTxt.getText())), Integer.parseInt(String.valueOf(HeightTxt.getText())), date1);
+        user.push();
+
     }
 }
