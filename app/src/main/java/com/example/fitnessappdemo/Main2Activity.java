@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.jar.Attributes;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -89,5 +90,10 @@ public class Main2Activity extends AppCompatActivity {
         UserClass user = new UserClass(Integer.parseInt(String.valueOf(AgeTxt.getText())), Integer.parseInt(String.valueOf(WeightTxt.getText())), Integer.parseInt(String.valueOf(HeightTxt.getText())), date1);
         user.push();
 
+    }
+
+    public void PlayVideoClick(View view) {
+        Intent intent = new Intent(Main2Activity.this, YoutubeVideoActivity.class);
+        startActivity(intent);
     }
 }
